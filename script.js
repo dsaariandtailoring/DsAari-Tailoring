@@ -21,7 +21,7 @@
       placeholder.innerHTML = `
         <footer class="site-footer">
           <div style="padding:18px;text-align:center;background:#a64d79;color:#fff;">
-            © 2025 D's Boutique
+            © 2025 D's Aari & Tailoring
           </div>
         </footer>`;
     }
