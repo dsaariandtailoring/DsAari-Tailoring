@@ -382,12 +382,6 @@ header {
 
 .footer-nav a:hover { opacity: 0.85; }
 
-.footer-social ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 10px;
-}
 
 .footer-social a {
   display: inline-flex;
@@ -400,10 +394,31 @@ header {
   transition: transform .16s, background .16s;
 }
 
-.footer-social a:hover {
-  transform: translateY(-4px);
-  background: rgba(255,255,255,0.12);
+
+.footer-social i {
+  font-size: 18px;
+  color: #fff;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-social a:hover i {
   color: #ffb6c1;
+  transform: scale(1.2);
+}
+
+.footer-contact i {
+  color: #fff;
+  font-size: 16px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.footer-social ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 10px;
 }
 
 .footer-bottom {
