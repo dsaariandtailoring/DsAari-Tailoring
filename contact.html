@@ -1,45 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact | D's Aari & Tailoring</title>
-  <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
-</head>
-<body>
-  <header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | D's Boutique</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      /* CONTACT FORM SPECIFIC STYLES */
+      .contact-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 80px 20px;
+        background: #fffafc;
+      }
+
+      .contact-container {
+        background: #ffffff;
+        padding: 40px 50px;
+        border-radius: 20px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        width: 100%;
+        text-align: center;
+      }
+
+      .contact-container h2 {
+        font-size: 28px;
+        color: #222;
+        margin-bottom: 10px;
+        font-weight: 600;
+      }
+
+      .contact-container p {
+        color: #666;
+        font-size: 15px;
+        margin-bottom: 25px;
+      }
+
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        font-size: 15px;
+        font-family: "Poppins", sans-serif;
+        transition: 0.3s ease;
+      }
+
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        border-color: #a01a58;
+        outline: none;
+        box-shadow: 0 0 6px rgba(160, 26, 88, 0.3);
+      }
+
+      .contact-form button {
+        padding: 12px;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #a01a58, #701046);
+        color: white;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .contact-form button:hover {
+        background: linear-gradient(135deg, #701046, #a01a58);
+        transform: scale(1.03);
+      }
+
+      /* Toast message */
+      .toast {
+        visibility: hidden;
+        min-width: 250px;
+        background-color: #a01a58;
+        color: #fff;
+        text-align: center;
+        border-radius: 10px;
+        padding: 16px;
+        position: fixed;
+        z-index: 10;
+        right: 30px;
+        bottom: 30px;
+        font-size: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+      }
+
+      .toast.show {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 600px) {
+        .contact-container {
+          padding: 30px 25px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Include Header -->
+    <header>
     <nav class="navbar">
       <h1 class="logo">D's Aari & Tailoring</h1>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
         <li><a href="services.html">Services</a></li>
         <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
       <div class="menu-toggle">&#9776;</div>
     </nav>
   </header>
 
-  <section class="contact">
-    <h2>Get In Touch</h2>
-    <p>We’d love to hear from you! Book an appointment, share your ideas, or drop a quick message.</p>
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea placeholder="Your Message" rows="5" required></textarea>
-      <button type="submit" class="btn">Send Message</button>
-    </form>
+    <!-- Contact Section -->
+    <section class="contact-section">
+      <div class="contact-container">
+        <h2>Contact Us</h2>
+        <p>We’d love to hear from you! Please fill out the form below.</p>
 
-    <div class="contact-info">
-      <h3>Visit Us</h3>
-      <p><strong>Address:</strong> No.18 Janaki Nagar annex, Kattupakkam, Chennai - 600056</p>
-      <p><strong>Phone:</strong> +91 78921 53963</p>
-      <p><strong>Email:</strong> ds.aariandtailoring@gmail.com</p>
-      <p><strong>Working Hours:</strong> Mon – Sat | 10:00 AM – 7:00 PM</p>
-    </div>
-  </section>
+        <form class="contact-form" id="contactForm">
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Your Email" required />
+          <input type="tel" name="phone" placeholder="Your Phone Number" required />
+          <textarea
+            name="message"
+            placeholder="Your Message"
+            rows="5"
+            required
+          ></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </section>
 
-  <div id="site-footer"></div>
-</body>
+    <!-- Toast -->
+    <div id="toast" class="toast">Your message has been sent successfully!</div>
+
+    <!-- Include Footer -->
+    <div id="site-footer"></div>
+
+    <!-- Your main script -->
+    <script src="script.js"></script>
+
+    <script>
+      
+      const SCRIPT_URL =
+        "https://script.google.com/macros/s/AKfycbzWrk5WG6dYfVPd48XN1HJ7SD_sfPJTp2YRPz7Z7oxaU6JCiYUWX6yEKBSdtWcymMpO/exec"; // e.g. https://script.google.com/macros/s/AKfycbx123xyz/exec
+
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          const form = e.target;
+          const formData = {
+            name: form.name.value,
+            email: form.email.value,
+            phone: form.phone.value,
+            message: form.message.value,
+          };
+
+          try {
+            const response = await fetch(SCRIPT_URL, {
+              method: "POST",
+              mode: "no-cors",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(formData),
+            });
+
+            // Show toast message
+            const toast = document.getElementById("toast");
+            toast.textContent = "Your message has been sent successfully!";
+            toast.classList.add("show");
+
+            setTimeout(() => {
+              toast.classList.remove("show");
+            }, 3000);
+
+            form.reset();
+          } catch (error) {
+            console.error("Error!", error.message);
+            const toast = document.getElementById("toast");
+            toast.textContent = "Something went wrong. Please try again!";
+            toast.classList.add("show");
+            setTimeout(() => {
+              toast.classList.remove("show");
+            }, 3000);
+          }
+        });
+    </script>
+  </body>
 </html>
